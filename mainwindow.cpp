@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
                                                         QFileDialog::ShowDirsOnly |
                                                         QFileDialog::DontResolveSymlinks);
         ui->fileInput1->setText(dir);
-        loadDirectory(dir, dir1);
+        onBrowseButtonPress(dir, dir1);
     });
 
     connect(ui->browseButton2, &QPushButton::pressed, this, [=](){
@@ -27,7 +27,7 @@ MainWindow::MainWindow(QWidget *parent)
                                                         QFileDialog::ShowDirsOnly |
                                                         QFileDialog::DontResolveSymlinks);
         ui->fileInput2->setText(dir);
-        loadDirectory(dir, dir2);
+        onBrowseButtonPress(dir, dir2);
     });
 }
 
@@ -36,7 +36,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::loadDirectory(const QString& path, Directory& dir) {
+void MainWindow::onBrowseButtonPress(const QString& path, Directory& dir) {
     bool loaded = false;
 
     ui->textBrowser->clear();
