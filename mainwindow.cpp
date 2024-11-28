@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->fileInput1->setText("Select a directory");
     ui->fileInput2->setText("Select a directory");
 
-    connect(ui->fileButton1, &QPushButton::pressed, this, [=](){
+    connect(ui->browseButton1, &QPushButton::pressed, this, [=](){
         QString dir = QFileDialog::getExistingDirectory(this, tr("Pick Directory"),
                                                         "/",
                                                         QFileDialog::ShowDirsOnly |
@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent)
         loadDirectory(dir, dir1);
     });
 
-    connect(ui->fileButton2, &QPushButton::pressed, this, [=](){
+    connect(ui->browseButton2, &QPushButton::pressed, this, [=](){
         QString dir = QFileDialog::getExistingDirectory(this, tr("Pick Directory"),
                                                         "/",
                                                         QFileDialog::ShowDirsOnly |

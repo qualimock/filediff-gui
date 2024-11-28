@@ -44,14 +44,14 @@
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
-         <widget class="QPushButton" name="fileButton1">
+         <widget class="QPushButton" name="browseButton1">
           <property name="text">
            <string>Browse...</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="fileButton2">
+         <widget class="QPushButton" name="browseButton2">
           <property name="text">
            <string>Browse...</string>
           </property>
