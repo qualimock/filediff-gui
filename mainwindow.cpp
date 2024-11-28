@@ -6,6 +6,9 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    connect(ui->fileButton1, &QPushButton::pressed, this, [=](){ loadDirectory(ui->fileInput1->text()); });
+    connect(ui->fileButton2, &QPushButton::pressed, this, [=](){ loadDirectory(ui->fileInput2->text()); });
 }
 
 MainWindow::~MainWindow()
