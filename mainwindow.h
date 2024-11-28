@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include <filediff.h>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -16,6 +18,9 @@ public:
     ~MainWindow();
 
 private:
+    Directory dir1;
+    Directory dir2;
+
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H
