@@ -50,5 +50,5 @@ void MainWindow::loadDirectory(const QString& path) {
     ui->statusbar->showMessage("Loaded directory " + _path);
     ui->infoLabel->setText("Total files: " + QString::number(dir1.files().size()));
 
-    ui->compareButton->setEnabled(!(dir1.files().empty() && dir2.files().empty()) && dir1.path() != dir2.path());
+    ui->compareButton->setEnabled(!(dir1.files().empty() || dir2.files().empty()) && dir1.path() != dir2.path());
 }
