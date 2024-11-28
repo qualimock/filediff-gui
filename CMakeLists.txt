@@ -40,6 +40,7 @@ else()
     else()
         add_executable(filediff-gui
             ${PROJECT_SOURCES}
+            comparewindow.h comparewindow.cpp comparewindow.ui
         )
     endif()
 endif()
