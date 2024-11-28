@@ -18,7 +18,7 @@ public:
     ~MainWindow();
 
 public slots:
-    void loadDirectory(const QString& path);
+    void loadDirectory(const QString& path, Directory& dir);
 
 private:
     Directory dir1;

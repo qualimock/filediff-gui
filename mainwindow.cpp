@@ -1,14 +1,34 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
+#include <QFileDialog>
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
-    connect(ui->fileButton1, &QPushButton::pressed, this, [=](){ loadDirectory(ui->fileInput1->text()); });
-    connect(ui->fileButton2, &QPushButton::pressed, this, [=](){ loadDirectory(ui->fileInput2->text()); });
+    ui->fileInput1->setText("Select a directory");
+    ui->fileInput2->setText("Select a directory");
+
+    connect(ui->fileButton1, &QPushButton::pressed, this, [=](){
+        QString dir = QFileDialog::getExistingDirectory(this, tr("Pick Directory"),
+                                                        "/",
+                                                        QFileDialog::ShowDirsOnly |
+                                                        QFileDialog::DontResolveSymlinks);
+        ui->fileInput1->setText(dir);
+        loadDirectory(dir, dir1);
+    });
+
+    connect(ui->fileButton2, &QPushButton::pressed, this, [=](){
+        QString dir = QFileDialog::getExistingDirectory(this, tr("Pick Directory"),
+                                                        "/",
+                                                        QFileDialog::ShowDirsOnly |
+                                                        QFileDialog::DontResolveSymlinks);
+        ui->fileInput2->setText(dir);
+        loadDirectory(dir, dir2);
+    });
 }
 
 MainWindow::~MainWindow()
@@ -16,7 +36,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::loadDirectory(const QString& path) {
+void MainWindow::loadDirectory(const QString& path, Directory& dir) {
     bool loaded = false;
 
     ui->textBrowser->clear();
@@ -24,10 +44,10 @@ void MainWindow::loadDirectory(const QString& path) {
     ui->statusbar->showMessage("Loading directory " + path);
 
     if (path.isEmpty()) {
-        loaded = dir1.load();
+        loaded = dir.load();
     }
     else {
-        loaded = dir1.load(path.toStdString());
+        loaded = dir.load(path.toStdString());
     }
 
     if (!loaded) {
@@ -36,11 +56,11 @@ void MainWindow::loadDirectory(const QString& path) {
         return;
     }
 
-    QString _path = QString(dir1.path().c_str());
+    QString _path = QString(dir.path().c_str());
 
     QString files;
 
-    for (auto file : dir1.files()) {
+    for (auto file : dir.files()) {
         files.append(_path + QString(file.first.c_str()));
         files.append("\n");
     }
@@ -48,7 +68,7 @@ void MainWindow::loadDirectory(const QString& path) {
     ui->textBrowser->setText(files);
 
     ui->statusbar->showMessage("Loaded directory " + _path);
-    ui->infoLabel->setText("Total files: " + QString::number(dir1.files().size()));
+    ui->infoLabel->setText("Total files: " + QString::number(dir.files().size()));
 
     ui->compareButton->setEnabled(!(dir1.files().empty() || dir2.files().empty()) && dir1.path() != dir2.path());
 }
