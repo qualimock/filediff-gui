@@ -17,6 +17,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+public slots:
+    void loadDirectory(const QString& path);
+
 private:
     Directory dir1;
     Directory dir2;
