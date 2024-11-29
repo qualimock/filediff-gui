@@ -34,10 +34,10 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QTextBrowser" name="textBrowser"/>
+      <widget class="QTextBrowser" name="diffBrowser1"/>
      </item>
      <item>
-      <widget class="QTextBrowser" name="textBrowser_2"/>
+      <widget class="QTextBrowser" name="diffBrowser2"/>
      </item>
     </layout>
    </item>
