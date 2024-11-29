@@ -12,3 +12,13 @@ CompareWindow::~CompareWindow()
 {
     delete ui;
 }
+
+void CompareWindow::setDiffData(const QMap<QString, QVector<Borders>>& bordersMap,
+                                const QMap<QString, QPair<QString, QString>>& filesMap) {
+    m_bordersMap = bordersMap;
+    m_filesMap = filesMap;
+
+    for (auto file : filesMap.keys()) {
+        ui->comboBox->addItem(file);
+    }
+}
