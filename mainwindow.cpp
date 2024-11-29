@@ -64,7 +64,7 @@ void MainWindow::onBrowseButtonPress(const QString& path, Directory& dir) {
 
     for (auto file : dir.files()) {
         files.append(_path + QString(file.first.c_str()));
-        files.append("\n");
+        files.append('\n');
     }
 
     ui->textBrowser->setText(files);
