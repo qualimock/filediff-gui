@@ -32,6 +32,7 @@ MainWindow::MainWindow(QWidget *parent)
         onBrowseButtonPress(dir, dir2);
     });
 
+    connect(ui->compareButton, &QPushButton::pressed, this, &MainWindow::onCompareButtonPress);
     connect(ui->diffButton, &QPushButton::pressed, &compareWindow, &QWidget::show);
 }
 
