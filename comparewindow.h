@@ -22,6 +22,10 @@ public:
 
     void setDiffData(const QMap<QString, QVector<Borders>>& bordersMap,
                      const QMap<QString, QPair<QString, QString>>& filesMap);
+
+private slots:
+    void onComboBoxItemSelected(const QString& item);
+
 private:
     Ui::CompareWindow *ui;
 
