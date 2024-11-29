@@ -2,6 +2,8 @@
 #include "./ui_mainwindow.h"
 
 #include <QFileDialog>
+#include <QMap>
+#include <QVector>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -73,4 +75,45 @@ void MainWindow::onBrowseButtonPress(const QString& path, Directory& dir) {
     ui->infoLabel->setText("Total files: " + QString::number(dir.files().size()));
 
     ui->compareButton->setEnabled(!(dir1.files().empty() || dir2.files().empty()) && dir1.path() != dir2.path());
+}
+
+void MainWindow::onCompareButtonPress() {
+    auto commonFiles = dir1.compare(dir2);
+
+    //   filename         borders
+    QMap<QString, QVector<Borders>> bordersMap;
+
+    //   filename        path1    path2
+    QMap<QString, QPair<QString, QString>> filesMap;
+
+    for (auto file : commonFiles) {
+        fs::path file1 = dir1.path().generic_string() + file.first.generic_string();
+        fs::path file2 = dir2.path().generic_string() + file.first.generic_string();
+
+        ui->statusbar->showMessage("Comparing" + QString(file1.c_str()) + " and " + QString(file2.c_str()));
+
+        auto stddiff = compareFiles(file1, file2);
+
+        bordersMap.insert(file.first.c_str(), QVector<Borders>(stddiff.begin(), stddiff.end()));
+        filesMap.insert(file.first.c_str(), QPair(dir1.path().c_str(), dir2.path().c_str()));
+    }
+
+    QString filesToShow;
+
+    for (auto filename : filesMap.keys()) {
+        filesToShow.append(filesMap.value(filename).first + filename);
+        filesToShow.append("    -->    ");
+        filesToShow.append(filesMap.value(filename).second + filename);
+        filesToShow.append('\n');
+    }
+
+    if (!bordersMap.empty()) {
+        compareWindow.setDiffData(bordersMap, filesMap);
+        ui->textBrowser->setText(filesToShow);
+        ui->infoLabel->setText("Files that differ: " + QString::number(bordersMap.size()));
+        ui->statusbar->showMessage("Done");
+        return;
+    }
+
+    ui->statusbar->showMessage("Directories do not differ");
 }
