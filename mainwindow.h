@@ -5,6 +5,8 @@
 
 #include <filediff.h>
 
+#include "comparewindow.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -19,10 +21,13 @@ public:
 
 private slots:
     void onBrowseButtonPress(const QString& path, Directory& dir);
+    void onCompareButtonPress();
 
 private:
     Directory dir1;
     Directory dir2;
+
+    CompareWindow compareWindow;
 
     Ui::MainWindow *ui;
 };

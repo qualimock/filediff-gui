@@ -29,6 +29,8 @@ MainWindow::MainWindow(QWidget *parent)
         ui->fileInput2->setText(dir);
         onBrowseButtonPress(dir, dir2);
     });
+
+    connect(ui->diffButton, &QPushButton::pressed, &compareWindow, &QWidget::show);
 }
 
 MainWindow::~MainWindow()
