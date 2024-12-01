@@ -3,6 +3,7 @@
 
 CompareWindow::CompareWindow(QWidget *parent)
     : QWidget(parent)
+    , m_outputType(true)
     , ui(new Ui::CompareWindow)
 {
     ui->setupUi(this);
@@ -50,4 +51,23 @@ void CompareWindow::onComboBoxItemSelected(const QString& item) {
 
     m_diff = diff;
     m_diffHex = QPair(diff.first.toUtf8().toHex(' '), diff.second.toUtf8().toHex(' '));
+
+    m_outputType = true;
+}
+
+void CompareWindow::onChangeOutputButtonPress() {
+    if (m_outputType) {
+        ui->changeOutputButton->setText("To Hex");
+
+        ui->diffBrowser1->setText(m_diff.first);
+        ui->diffBrowser2->setText(m_diff.second);
+    }
+    else {
+        ui->changeOutputButton->setText("To Text");
+
+        ui->diffBrowser1->setText(m_diffHex.first);
+        ui->diffBrowser2->setText(m_diffHex.second);
+    }
+
+    m_outputType = !m_outputType;
 }

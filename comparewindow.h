@@ -25,9 +25,14 @@ public:
 
 private slots:
     void onComboBoxItemSelected(const QString& item);
+    void onChangeOutputButtonPress();
 
 private:
     Ui::CompareWindow *ui;
+
+    // true -> text
+    // false -> hex
+    bool m_outputType;
 
     Borders m_aroundChunk;
 
