@@ -11,6 +11,7 @@ CompareWindow::CompareWindow(QWidget *parent)
     m_aroundChunk = createBorders(ui->spinBox->value(), ui->spinBox->value());
 
     connect(ui->comboBox, SIGNAL(textActivated(const QString&)), this, SLOT(onComboBoxItemSelected(const QString&)));
+    connect(ui->changeOutputButton, &QPushButton::pressed, this, &CompareWindow::onChangeOutputButtonPress);
 }
 
 CompareWindow::~CompareWindow()
