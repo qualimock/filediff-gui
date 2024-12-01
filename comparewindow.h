@@ -25,6 +25,7 @@ public:
 
 private slots:
     void onComboBoxItemSelected(const QString& item);
+    void onSubmitButtonPress();
     void onChangeOutputButtonPress();
 
 private:

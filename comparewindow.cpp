@@ -57,6 +57,13 @@ void CompareWindow::onComboBoxItemSelected(const QString& item) {
     onChangeOutputButtonPress();
 }
 
+void CompareWindow::onSubmitButtonPress() {
+    if (ui->spinBox->value() != m_aroundChunk.left) {
+        m_aroundChunk = createBorders(ui->spinBox->value(), ui->spinBox->value());
+        emit ui->comboBox->textActivated(ui->comboBox->currentText());
+    }
+}
+
 void CompareWindow::onChangeOutputButtonPress() {
     if (m_outputType) {
         ui->changeOutputButton->setText("To Hex");
