@@ -28,14 +28,14 @@
         <item>
          <widget class="QLineEdit" name="fileInput1">
           <property name="readOnly">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QLineEdit" name="fileInput2">
           <property name="readOnly">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
          </widget>
         </item>
