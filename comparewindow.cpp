@@ -54,6 +54,7 @@ void CompareWindow::onComboBoxItemSelected(const QString& item) {
     m_diffHex = QPair(diff.first.toUtf8().toHex(' '), diff.second.toUtf8().toHex(' '));
 
     m_outputType = true;
+    onChangeOutputButtonPress();
 }
 
 void CompareWindow::onChangeOutputButtonPress() {
