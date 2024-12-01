@@ -48,6 +48,6 @@ void CompareWindow::onComboBoxItemSelected(const QString& item) {
             chunk1++;
     }
 
-    ui->diffBrowser1->setText(diff.first);
-    ui->diffBrowser2->setText(diff.second);
+    m_diff = diff;
+    m_diffHex = QPair(diff.first.toUtf8().toHex(' '), diff.second.toUtf8().toHex(' '));
 }

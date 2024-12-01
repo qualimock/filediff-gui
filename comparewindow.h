@@ -29,6 +29,9 @@ private slots:
 private:
     Ui::CompareWindow *ui;
 
+    QPair<QString, QString> m_diff;
+    QPair<QString, QString> m_diffHex;
+
     QMap<QString, QVector<Borders>> m_bordersMap;
     QMap<QString, QPair<QString, QString>> m_filesMap;
 };
