@@ -13,6 +13,9 @@ CompareWindow::CompareWindow(QWidget *parent)
     connect(ui->comboBox, SIGNAL(textActivated(const QString&)), this, SLOT(onComboBoxItemSelected(const QString&)));
     connect(ui->submitButton, &QPushButton::pressed, this, &CompareWindow::onSubmitButtonPress);
     connect(ui->changeOutputButton, &QPushButton::pressed, this, &CompareWindow::onChangeOutputButtonPress);
+
+    ui->diffBrowser1->setText("Select file");
+    ui->diffBrowser2->setText("Select file");
 }
 
 CompareWindow::~CompareWindow()
