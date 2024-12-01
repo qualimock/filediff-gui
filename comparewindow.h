@@ -29,6 +29,8 @@ private slots:
 private:
     Ui::CompareWindow *ui;
 
+    Borders m_aroundChunk;
+
     QPair<QString, QString> m_diff;
     QPair<QString, QString> m_diffHex;
 

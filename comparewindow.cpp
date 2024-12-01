@@ -7,6 +7,8 @@ CompareWindow::CompareWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    m_aroundChunk = createBorders(ui->spinBox->value(), ui->spinBox->value());
+
     connect(ui->comboBox, SIGNAL(textActivated(const QString&)), this, SLOT(onComboBoxItemSelected(const QString&)));
 }
 
@@ -28,8 +30,6 @@ void CompareWindow::setDiffData(const QMap<QString, QVector<Borders>>& bordersMa
 void CompareWindow::onComboBoxItemSelected(const QString& item) {
     QPair<QString, QString> diff;
     QPair<QString, QString> path = m_filesMap.value(item);
-
-    Borders aroundChunk = createBorders(ui->spinBox->value(), ui->spinBox->value());
 
     QVector<QString> diff1;
     QVector<QString> diff2;
