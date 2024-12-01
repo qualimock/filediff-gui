@@ -7,7 +7,7 @@ CompareWindow::CompareWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    connect(ui->comboBox, SIGNAL(activated(const QString&)), this, SLOT(onComboBoxItemSelected(const QString&)));
+    connect(ui->comboBox, SIGNAL(textActivated(const QString&)), this, SLOT(onComboBoxItemSelected(const QString&)));
 }
 
 CompareWindow::~CompareWindow()
