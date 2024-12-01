@@ -37,8 +37,8 @@ void CompareWindow::onComboBoxItemSelected(const QString& item) {
     QVector<QString> diff2;
 
     for (auto borders : m_bordersMap.value(item)) {
-        diff1.push_back(getFileChunk(fs::path((path.first + item).toStdString()), &aroundChunk, &borders).c_str());
-        diff2.push_back(getFileChunk(fs::path((path.second + item).toStdString()), &aroundChunk, &borders).c_str());
+        diff1.push_back(QString::fromStdString(getFileChunk(fs::path((path.first + item).toStdString()), &m_aroundChunk, &borders)));
+        diff2.push_back(QString::fromStdString(getFileChunk(fs::path((path.second + item).toStdString()), &m_aroundChunk, &borders)));
     }
 
     auto chunk1 = diff1.begin();
