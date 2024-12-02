@@ -1,5 +1,5 @@
 # filediff-gui
-A GUI application showing the capabilities of the library [libfilediff](https://github.com/qualimock/filediff-gui)
+A GUI application showing the capabilities of the library [libfilediff](https://github.com/qualimock/libfilediff)
 
 filediff-gui is available in ALT Sisyphus repository
 ```
