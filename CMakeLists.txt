@@ -35,7 +35,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 # For more information, see https://doc.qt.io/qt-6/qt-add-executable.html#target-creation
 else()
     if(ANDROID)
-        add_library(filediff-gui SHARED
+        add_library(filediff-gui SHAREDinstall (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/icons/16/resize.svg DESTINATION share/icons/hicolor/16x16/apps)
             ${PROJECT_SOURCES}
         )
 # Define properties for Android with Qt 5 after find_package() calls as:
@@ -74,3 +74,6 @@ install(TARGETS filediff-gui
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(filediff-gui)
 endif()
+
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/filediff-gui.svg DESTINATION share/icons/hicolor/scalable/apps)
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/filediff-gui.desktop DESTINATION share/applications)

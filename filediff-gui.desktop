@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=filediff GUI
+Comment=See directory difference
+Exec=filediff-gui
+Icon=filediff-gui
+Type=Application
+Terminal=false
