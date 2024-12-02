@@ -49,8 +49,8 @@ void CompareWindow::onComboBoxItemSelected(const QString& item) {
          chunk1 != diff1.end() || chunk2 != diff2.end();
          chunk1++, chunk2++)
     {
-        m_diff.first.push_back(*chunk1);
-        m_diff.second.append(*chunk2);
+        diff.first.append(*chunk1);
+        diff.second.append(*chunk2);
     }
 
     m_diff = diff;
