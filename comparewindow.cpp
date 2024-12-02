@@ -45,17 +45,16 @@ void CompareWindow::onComboBoxItemSelected(const QString& item) {
         diff2.push_back(QString::fromStdString(getFileChunk(fs::path((path.second + item).toStdString()), &m_aroundChunk, &borders)));
     }
 
-    auto chunk1 = diff1.begin();
-    for (auto chunk2 : diff2) {
-        diff.first.append(chunk1);
-        diff.second.append(chunk2);
-
-        if (chunk1 != diff1.end())
-            chunk1++;
+    for (auto chunk1 = diff1.begin(), chunk2 = diff2.begin();
+         chunk1 != diff1.end() || chunk2 != diff2.end();
+         chunk1++, chunk2++)
+    {
+        m_diff.first.push_back(*chunk1);
+        m_diff.second.append(*chunk2);
     }
 
     m_diff = diff;
-    m_diffHex = QPair(diff.first.toUtf8().toHex(' '), diff.second.toUtf8().toHex(' '));
+    m_diffHex = QPair<QByteArray, QByteArray>(m_diff.first.toUtf8().toHex(' '), m_diff.second.toUtf8().toHex(' '));
 
     m_outputType = true;
     onChangeOutputButtonPress();
