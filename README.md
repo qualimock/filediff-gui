@@ -1,10 +1,5 @@
 # filediff-gui
-A GUI application showing the capabilities of the library [libfilediff](https://github.com/qualimock/filediff-gui)
-
-filediff-gui is available in ALT Sisyphus repository
-```
-apt-get install filediff-gui
-```
+A GUI application showing the capabilities of the library [libfilediff](https://github.com/qualimock/libfilediff)
 
 ## Prerequisites
 To build the application you should use [CMake](https://cmake.org)
